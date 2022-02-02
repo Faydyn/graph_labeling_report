@@ -1,0 +1,181 @@
+% Encoding: UTF-8
+
+% ==============
+% BibTeX HOW TO?
+% ==============
+
+% We want a clean and concise database! Therefore, we agree on some rules, which
+% are listed below.
+%
+% -------------------
+% 1. WHAT TO COLLECT?
+% -------------------
+%
+% We limit our entries to well-defined sets of information. We want only this
+% information, nothing more! What we collect depends on the entry type.
+%
+% For journal articles, we store: author, title, journal, year, volume, number, pages, and doi.
+% Nothing more!
+%
+% Article{Hutchins85DirectManipulation,
+%   author  = {Hutchins, Edwin L. and Hollan, James D. and Norman, Donald A.},
+%   title   = {{Direct Manipulation Interfaces}},
+%   journal = {Human-Computer Interaction},
+%   year    = {1985},
+%   volume  = {1},
+%   number  = {4},
+%   pages   = {311--338},
+%   doi     = {10.1207/s15327051hci0104_2},
+% }
+%
+% For books, we store: title, publisher, year, author, and if available the edition and doi.
+% Optionally, we could store location. Nothing more! 
+%
+% Book{Tufte01VisualDisplay,
+%   title     = {{The Visual Display of Quantitative Information}},
+%   publisher = {Graphics Press},
+%   year      = {2001},
+%   author    = {Edward R. Tufte},
+%   edition   = {2},
+% }
+%
+% For papers from proceedings, we store: author, title, booktitle, year, pages, publisher, and doi.
+% Nothing more!
+% Below, more information is given on the use of string such as PROC and IEEE, which are used w/o { }.
+%
+% InProceedings{Bader12Helferlein,
+%   author    = {Sebastian Bader and Martin Nyolt},
+%   title     = {{A Context-aware Publish-subscribe Middleware for Distributed Smart Environments}},
+%   booktitle = PROC #{ IEEE Conference on Pervasive Computing and Communications (PERCOM)},
+%   year      = {2012},
+%   pages     = {100--104},
+%   publisher = IEEE,
+%   doi       = {10.1109/PerComW.2012.6197458},
+% }
+%
+%
+% ----------------------------
+% 2. HOW TO STORE INFORMATION?
+% ----------------------------
+%
+% Author names should be fully spelled out, umlauts can be used!
+%
+% Good: {Hans-Jörg Schulz}
+% Bad: {H.-J. Schulz}
+%
+% Good: {Bruce H. McCormick}
+% Bad: {B. H. McCormick}
+%
+% TITLES should be in double {{ .. }} and properly capitalized!
+%
+% Good: {{Visualization in Scientific Computing}}
+% Bad: {Visualization in Scientific Computing}
+%
+% Good: {{Direct Manipulation Interfaces}}
+% Bad: {{Direct manipulation interfaces}}
+%
+% JOURNALS and Proceedings should be consistent. We maintain a list of
+% strings that should be used wherever possible. String replacements
+% are to be used without surrounding { }.
+%
+% STRINGS are available for several journals: TVCG, CGF, ...
+% More can be added on demand.
+%
+% Good: TVCG
+% Bad: {IEEE Transactions on Visualization and Computer Graphics}
+%
+% Strings for proceedings: InfoVis, AVI, CHI, VIS, VAST, VisSym,
+% More can be added.
+%
+% Good: ITS
+% Bad: {Proceedings of International Conference on Interactive Tabletops and Surfaces}
+%
+% We CANNOT maintain strings for all possible proceedings. In case where no
+% string is available, the following scheme should be used:
+%
+% PROC #{ Title of the Conference or Workshop (short name)}
+%
+% The title should NOT contain year, location, number of conference, etc., just the title!
+% The short name should not contain a year!
+%
+% Good: PROC #{ ACM Conference on Computer Supported Cooperative Work (CSCW)}
+% Bad: {{CSCW} 2000, Proceeding on the {ACM} 2000 Conference on Computer Supported Cooperative Work, Philadelphia, PA, USA, December 2-6, 2000},
+%
+% There are also special proceedings where PROC cannot be used and a manual entry is necessary. In such cases
+% we should follow "less is more"
+%
+% Good: {Adjunct Papers Proceedings of the International Conference on Ubiquitous Computing (UbiComp)}
+% Bad: {UbiComp 2010: Ubiquitous Computing, 12th International Conference, UbiComp 2010, Copenhagen, Denmark, September 26-29, 2019, Adjunct Papers Proceedings}
+%
+
+%% String short cuts for relevant venues
+
+@String{ACM        = {ACM Press}}
+@String{PROC       = {Proceedings of the}}
+@String{AVI        = PROC #{ Conference on Advanced Visual Interfaces (AVI)}}
+@String{CGF        = {Computer Graphics Forum}}
+@String{CHI        = PROC #{ SIGCHI Conference on Human Factors in Computing Systems (CHI)}}
+@String{CHI_EA     = {CHI Extended Abstracts on Human Factors in Computing Systems}}
+@String{EG         = {Eurographics Association}}
+@String{IEEE       = {IEEE Computer Society}}
+@String{GD         = PROC #{ International Symposium on Graph Drawing (GD)}}
+@String{GI         = PROC #{ Graphics Interface Conference (GI)}}
+@String{INFOVIS    = PROC #{ IEEE Symposium Information Visualization (InfoVis)}}
+@String{ISMAR      = PROC #{ IEEE International Symposium on Mixed and Augmented Reality (ISMAR)}}
+@String{ITS        = PROC #{ International Conference on Interactive Tabletops and Surfaces (ITS)}}
+@String{IV         = PROC #{ International Conference Information Visualisation (IV)}}
+@String{KDD        = PROC #{ SIGKDD Conference on Knowledge Discovery and Data Mining (KDD)}}
+@String{PACIFICVIS = PROC #{ IEEE Pacific Visualization Symposium (PacificVis)}}
+@String{SG         = PROC #{ Smart Graphics (SG)}}
+@String{SIGGRAPH   = PROC #{ Annual Conference on Computer Graphics and Interactive Techniques (SIGGRAPH)}}
+@String{TVCG       = {IEEE Transactions on Visualization and Computer Graphics}}
+@String{UIST       = PROC #{ ACM Symposium on User Interface Software and Technology (UIST)}}
+@String{VAST_CONF  = PROC #{ IEEE Conference on Visual Analytics Science and Technology (VAST)}}
+@String{VAST_SYM   = PROC #{ IEEE Symposium on Visual Analytics Science and Technology (VAST)}}
+@String{VDA        = PROC #{ Conference on Visualization and Data Analysis (VDA)}}
+@String{VIS        = PROC #{ IEEE Visualization Conference (Vis)}}
+@String{VISSYM     = PROC #{ Joint Eurographics / IEEE VGTC Symposium on Visualization (VisSym)}}
+@String{VL         = PROC #{ IEEE Symposium on Visual Languages (VL)}}
+
+%% References
+
+@InProceedings{Tominski12GreatWall,
+  author    = {Christian Tominski and Hans-Jörg Schulz},
+  title     = {{The Great Wall of Space-Time}},
+  booktitle = PROC #{ Workshop on Vision, Modeling \& Visualization (VMV)},
+  year      = {2012},
+  pages     = {199--206},
+  publisher = EG,
+  doi       = {10.2312/PE/VMV/VMV12/199-206},
+}
+
+@InProceedings{Tominski16CompaRing,
+  author    = {Christian Tominski},
+  title     = {{CompaRing: Reducing Costs of Visual Comparison}},
+  booktitle = {Short Paper Proceedings of the Eurographics Conference on Visualization (EuroVis)},
+  year      = {2016},
+  pages     = {137--141},
+  publisher = EG,
+  doi       = {10.2312/eurovisshort.20161175},
+}
+
+@Article{Tominski17LensesExtended,
+  author  = {Christian Tominski and Stefan Gladisch and Ulrike Kister and Raimund Dachselt and Heidrun Schumann},
+  title   = {{Interactive Lenses for Visualization: An Extended Survey}},
+  journal = CGF,
+  year    = {2017},
+  volume  = {36},
+  number  = {6},
+  pages   = {173--200},
+  doi     = {10.1111/cgf.12871},
+}
+
+@Book{Tominski20IVDA,
+  author    = {Christian Tominski and Heidrun Schumann},
+  title     = {{Interactive Visual Data Analysis}},
+  year      = {2020},
+  publisher = {CRC Press},
+  doi       = {10.1201/9781315152707},
+}
+
+@Comment{jabref-meta: databaseType:bibtex;}
