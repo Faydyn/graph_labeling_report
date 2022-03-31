@@ -1,0 +1,35 @@
+Graphen sind wohl die mit am meisten genutzte Datenstruktur der Informatik.
+Durch sie lassen sich viele verschiedene Sachverhalte modellieren.
+Mit \texttt{iGraph.js} existiert als praktische Grundlage ein Tool zur interaktiven und dynamischen Visualisierung von Graphen.
+
+Das Problem ist, dass ohne die Namen der Knoten und Kanten dem Graph recht wenig Bedeutung abgewonnen werden kann,
+es fehlt Kontext. Der Kontext kann durch ein Labeling des Graphen klarer werden. Dazu sind allerdings zwei Dinge zentral:
+
+Erstens sollte das Labeling muss visuell ansprechend sein, das heißt, es muss intuitiv klar sein, welches Label zu welchem Knoten oder zu welcher Kante gehört
+und es sollten keine Überdeckungen entstehen.
+
+Zweitens sollte das Labeling performant sein, da selbst die schönste Anordnung von Labels nicht nützlich ist in einem dynamischen und interaktiven Umfeld, wenn sie zu lange zum Errechnen braucht.
+Den bestmöglichen Kompromiss aus Labeling Qualität und Performance zu finden, ist die Kernaufgabe dieses Projektes.
+
+Dazu haben wir eine Labeling Pipeline implementiert:
+Basically our approach is described by Luboschik et al.. \\ \\
+\begin{enumerate}
+    \item Koordinaten der Knoten/Kanten updaten (von \texttt{iGraph.js})
+    \item Potentielle Labelpositionen generieren
+    \item Konfliktermittlung
+    \item Tatsächliche Labelposition festlegen und speichern
+    \item Visualisierung
+\end{enumerate}
+
+Natürlich ist diese nicht ganz so statisch und sukzessiv wie hier vereinfacht beschrieben.
+Zum Beispiel finden Schritt 2 und 3 verschränkt statt, also werden nicht erst alle potentiellen Positionen generiert und dann nach Konflikten gesucht.
+Stattdessen finden sie abwechseln statt.
+
+Dies spiegelt den gierigen Ansatz wieder, der dieser Implementation zu Grunde liegt. Dadurch soll die Kernaufgabe des Projektes umgesetzt werden,
+also schnell möglichst gute Labelpositionen zu finden. Dies schien die sinnvollste Option in Anbetracht der Tatsache, dass das Labeling Problem NP-Hard ist.
+
+Es sei abschließend gesagt, dass diese Pipeline und die verwendeten Techniken und Methoden nicht ausschließlich für Graph Labeling genutzt werden müssen.
+Beispielsweise wäre auch eine Nutzung für Radare von etwa Schiffen oder Flugzeugen vorstellbar, bei denen andere Schiffe/Flugzeuge mit Namen versehen werden sollen.
+Formal genommen ist das ja ein Graph ohne Kanten - sollte nur darstellen, dass die Techniken und Algorithmen sehr generisch sind.
+
+Als hauptsächliche theoretische Grundlage diente zur Spezifikation der Pipeline sowie der Labeling Verfahren und Konfliktermittlung eine Arbeit von Luboschik et al.\cite{RN38}, in der das Vorgehen beschrieben wird.
