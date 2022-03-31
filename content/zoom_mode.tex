@@ -1,12 +1,12 @@
 %Big Bounding box around, no quadtree used
 
-Wenn die Element zu dicht beieinander oder sogar aufeinander bzw.überdeckend sind, kann es sind, dass der Quadtree ineffizient wird.
+Wenn die Elemente zu dicht beieinander oder sogar aufeinander bzw.überdeckend sind, kann es sind, dass der Quadtree ineffizient wird.
 Dies ist vor allem der Fall, wenn man weit rauszoomt.
 Dann ist der Graph quasi auf einem Punkt und um ihn herum ist viel ungenutzter Raum.
 
 Ob der Zoom Mode nutzbar ist, wird kontrolliert, wenn der Quadtree sich als ineffizient deklariert.
 Hierfür werden von allen Knoten minimalen und maximalen $x$- und $y$ Werte ermittelt und
-aus diesen eine große Bounding Box generiert, die dann den Graph vollständig enthält.
+aus diesen eine große Bounding Box generiert, die dann den Graphen vollständig enthält.
 
 Diese Bounding Box des Graphen wird mit den Bounds verglichen und es wird überprüft, ob
 oberhalb oder unterhalb der Graph-Bounding Box noch wenigstens eine Labelhöhe Platz ist oder

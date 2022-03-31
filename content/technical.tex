@@ -2,7 +2,7 @@
 %
 %Greedy approach realized by generator functions.
 
-Das gesamte Projekt wurde in JavaScript umgesetzt, da die Basis, \texttt{iGraph.js}, schon in JavaScript geschrieben war.
+Das gesamte Projekt wurde in JavaScript umgesetzt, da die Basis \texttt{iGraph.js}, schon in JavaScript geschrieben war.
 Es ist maximal modular zur Basis, das heißt, bis auf eine zusätzliche Zeile im Update-Loop (und die GUI-Elemente) wurden am Quellcode der Basis keine Veränderungen vorgenommen.
 
 Der Code Style ist ES6-konform. Es wurden Klassen genutzt, um die einzelnen, logischen Bereiche auch im Code entsprechend zu trennen.
@@ -12,11 +12,11 @@ Ausnutzung von sprachlichen Besonderheiten oder Datenstrukturen wurden in folgen
 
 \subsubsection{Maps}
 Die Knoten und Kanten werden in Maps gespeichert. Man kann sie eindeutig durch eine ID zuordnen (die von \texttt{iGraph.js} selbst kommt, im Falle von Kanten) oder einfach durch den Namen des Labels (im Falle von Knoten).
-So erhält man eine schnelle Zugriffszeit von $O(1)$ für das Updaten der Werte. Bei den Knoten wird in der Map die Sortierung erhalten, sodass die Map im weiteren Verlauf einfach zum Array konviertert werden kann.
+So erhält man eine schnelle Zugriffszeit von $O(1)$ für das Updaten der Werte. Bei den Knoten wird in der Map die Sortierung erhalten, sodass die Map im weiteren Verlauf einfach zum Array konvertiert werden kann.
 
 \subsubsection{Generator Functions}
 Generator Functions werden genutzt, um den Greedy Approach des Projektes zu realisieren.
-Die Elemente werden einzeln "yielded" und weiterverarbeitet. Zum Beispiel kann so eine Funktion für alle potentiellen Labelpositionen angebeben werden,
+Die Elemente werden einzeln "yielded" und weiterverarbeitet. Zum Beispiel kann so eine Funktion für alle potentiellen Labelpositionen angegeben werden,
 wenn sie aber als Generator Function gekennzeichnet ist, kann man Finden einer tatsächlicher Labelposition einfach returnen und die restlichen Positionen werden nicht berechnet.
 
 \subsection{Async Functions}

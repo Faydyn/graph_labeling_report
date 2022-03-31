@@ -1,12 +1,12 @@
 %something with HTML canvas
 
 Wenn einem für eine Labelposition zugesichert werden kann, dass diese konfliktfrei ist,
-dann wird der Text bzw. Name des Labels ausgelesen und an eben diese Position in dem 2D-Canvas zu dem Graphen und ggf. anderen Labels dazugezeichnet.
+dann wird der Text bzw. Name des Labels ausgelesen und an eben diese Position in dem 2D-Canvas zu dem Graphen und ggf. anderen Labels hinzugefügt.
 
 Ein Sonderfall stellen Label dar, die mit \hyperref[subsubsec:8pos]{8-Position-Model} oder \hyperref[subsubsec:spiral]{Spiral-Model} generiert wurden,
 da hier eine Hilfslinie zur Kenntlichmachung der Zusammengehörigkeit von Knoten und Label zusätzlich gezeichnet wird.
 
 Diese Labels enthalten daher weitere Informationen über die Linie und die Seite des Labels, zu der diese Linie verbindet.
-Die Seite ist immer entgegengesetzt zur Richtung in der das Label gefunden wurde, also wenn das Label unterhalb des Knoten (Süd-Position) ist, verbindet die Hilfslinie Knoten und Oberseite des Labels.
+Die Seite ist immer entgegengesetzt zur Richtung, in der das Label gefunden wurde, also wenn das Label unterhalb des Knoten (Süd-Position) ist, verbindet die Hilfslinie Knoten und Oberseite des Labels.
 Die Hilfslinie endet immer in der Mitte der Seite.
-Nur die Seite mit der die Linie verbindet, wird dann zur weiteren Verdeutlichung selbst auch als Linie gezeichnet.
+Nur die Seite, mit der die Linie verbindet, wird dann zur weiteren Verdeutlichung selbst auch als Linie gezeichnet.

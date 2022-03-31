@@ -5,27 +5,27 @@
 %
 
 Die Grundlage des Labeling wurde durch dieses Projekt erstellt. Auf der Seite der Performance wurden viele Techniken umgesetzt
-und Möglichkeit genutzt um unnötige Berechnungen zu ersparen. Hinsicht der Visualisierung können aber vor allem noch Verbesserungen vorgenommen werden:
+und Möglichkeit genutzt, um unnötige Berechnungen zu ersparen. Hinsicht der Visualisierung können aber vor allem noch Verbesserungen vorgenommen werden:
 
 \subsubsection{Verbessertes Kantenlabeling}
 Die Kantenlabels sollten ebenfalls nach kartografischen Standard gezeichnet werden.\cite{cartography} Das heißt, parallel zur entsprechenden Kante.
-Dafür wären zum einen verbesserte Animationen nötig, um die Labels zu rotieren. Des Weiteren eine verbesserte Konfliktermittlung,
+Dafür wären zum einen verbesserte Animationen nötig, um die Labels zu rotieren. Zum anderen eine verbesserte Konfliktermittlung,
 da dann nicht mehr garantiert werden kann, dass die Kantenlabels parallel zur $x$- und $y$-Achse sind. Möglicherweise wäre der Ansatz von Schwartges et al.\cite{edge_labels} hierfür ein sinnvolles Werkzeug - und auch darüber hinaus für Kanten die keine Linie sind. Dies lässt sich dann gegebenenfalls mit dem nächsten Vorschlag verbinden.
 
 Die Kanten werden generell sehr vernachlässigt behandelt, was aber auch der Natur der Daten geschuldet ist.
 Für aufwendiges Design und zusätzliche visuelle Kodierungen der Kanten sind viele Verbesserungsvorschläge durch Romat et al.\cite{edge_improve} gegeben.
-Das Kantenlabeling muss hier eine Balance finden und die zusätzlichen Infos ergänzen, darf sich aber nicht aufdrängen.
-Vielleicht ist es auch generell sinnvoller, vorrangig Knoten zu labeln und die Bedeutung der Kanten anders visuell zu enkodieren für ein intuitiveres Verständnis.
+Das Kantenlabeling muss hier eine Balance finden und die zusätzlichen Informationen ergänzen, darf sich aber nicht aufdrängen.
+Vielleicht ist es auch generell sinnvoller, vorrangig Knoten zu labeln und die Bedeutung der Kanten anders visuell zu enkodieren für ein intuitives Verständnis.
 
 \subsubsection{Verbesserte Repräsentation der Knoten als Kreis}
-Das würde die Labelqualität verbessern, da die Labels noch näher an den Knoten wären und dementsprechend auch weniger Platz an jedem Knoten verschwenden (die Ecken der Bounding Box, die nicht Teil der Knotens sind).
+Das würde die Labelqualität verbessern, da die Labels noch näher an den Knoten wären und dementsprechend auch weniger Platz an jedem Knoten verschwenden (die Ecken der Bounding Box, die nicht Teil des Knotens sind).
 
 Auch hier wäre eine verbesserte Konfliktermittlung, da die Knoten dann als Kreis statt als Bounding Box repräsentiert würden.
-Zusammen mit dem ersten Verbesserungsvorschlag müsste man dann nicht Rechteckee parallel zur $x$- und $y$-Achse, sondern stattdessen beliebig orientierte Rechtecke und Kreise vergleichen, was wesentlich aufwendiger ist.
+Zusammen mit dem ersten Verbesserungsvorschlag müsste man dann nicht Rechtecke parallel zur $x$- und $y$-Achse, sondern stattdessen beliebig orientierte Rechtecke und Kreise vergleichen, was wesentlich aufwendiger ist.
 
 \subsubsection{Konservativere Animationen}
-Ein wichtiger Teil ist durch die Target Separation ist nach Ghani et al. \cite{percept_animate} bereits getan. Die Struktur des Graphen und die Konfliktfreiheit der Labels ergegeben dies.
-Zuweilen sind die Animationen allerdings sehr aktiv, was zu viel Unruhe im Labeling führt. Gegebenfalls sollte man eine Toleranzzeit einführen,
+Ein wichtiger Teil ist durch Target Separation nach Ghani et al. \cite{percept_animate} bereits getan. Die Struktur des Graphen und die Konfliktfreiheit der Labels ergeben dies.
+Zuweilen sind die Animationen allerdings sehr aktiv, was zu viel Unruhe im Labeling führt. Gegebenenfalls sollte man eine Toleranzzeit einführen,
 sodass sich Labels kurzzeitig überlappen dürfen, da viele Animationen durch minimale Überdeckungen während der Bewegungen entstehen.
 Eine solche Toleranzzeit würde das Gesamtbild etwas statischer machen und einfach bei den \hyperref[subsec:consts]{Magic Constants} hinzugefügt werden.
 

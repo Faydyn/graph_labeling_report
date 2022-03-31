@@ -1,6 +1,6 @@
-Im Gegensatz zum Labeling der Knoten werden beim Kantenlabeling einige Einsparung vorgenommen.
+Im Gegensatz zum Labeling der Knoten werden beim Kantenlabeling einige Einsparungen vorgenommen.
 Der Grund dafür liegt zum ersten in der Natur von Graphen selbst, da diese für $n$ Knoten bis zu $n^2$ Kanten haben können.
-Bei einem großen und dichten Graphen wären das schlichtweg zu viele Labelpositonen, wenn man so aufwendige Verfahren wie bei den Knoten verwendet.
+Bei einem großen und dichten Graphen wären das schlichtweg zu viele Labelpositionen, wenn man so aufwendige Verfahren wie bei den Knoten verwendet.
 
 Ein weiterer Grund ist speziell für \texttt{iGraph.js}: Die Daten, die für Kanten zur Verfügung stehen, sind in der Regel nur Integer-Werte.
 Da diese Werte ohne Kontext relativ nichtssagend sind, werden Kanten stattdessen mit den Namen der durch sie verbundenen Knoten benannt.
@@ -19,10 +19,10 @@ Aus den oben genannten Gründen ist das Kantenlabeling aber sowieso nebensächli
 und gegen die Ästhetik in diesem Fall gerechtfertigt ist.
 
 \subsubsection{Midpoint}
-Der Startpunkt für eine potentielle Labelposition auf Kanten ist grundsätzlich der Mittelpunkt der Kante, das heißt, das Label befindet sich in
+Der Startpunkt für eine potenzielle Labelposition auf Kanten ist grundsätzlich der Mittelpunkt der Kante, das heißt, das Label befindet sich in
 gleichmäßigem Abstand zu seinen Knoten und der Mittelpunkt des Labels liegt auf dem der Kante. Die Ausrichtung ist, wie auch bei den Knoten, parallel zur $x$- bzw. $y$-Achse.
 
 \subsubsection{Interpolation}
-Weitere potentielle Labelpositionen werden entlang der Kante interpoliert bzw. das Label wird entlang der Kante in gleichmäßigem Abstand verschoben.
-Ob dieses Verfahren verwendet werden soll und wenn ja, wieviele Positionen auf der Kante interpoliert werden sollen, sind als \hyperref[subsec:consts]{Magic Constants} in \texttt{consts.js} definiert.
+Weitere potenzielle Labelpositionen werden entlang der Kante interpoliert bzw. das Label wird entlang der Kante in gleichmäßigem Abstand verschoben.
+Ob dieses Verfahren verwendet werden soll und wenn ja, wie viele Positionen auf der Kante interpoliert werden sollen, sind als \hyperref[subsec:consts]{Magic Constants} in \texttt{consts.js} definiert.
 Falls der Mittelpunkt der Kante selbst wieder ein Ergebnis der Interpolation ist, wird er übersprungen, da er zuvor bereits erfolglos als Labelposition getestet wurde und nur dann die Interpolation überhaupt angewandt wird.

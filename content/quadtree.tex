@@ -1,13 +1,13 @@
 %less comparisions, logarithmic stuff, etc.
 
-Da sich während des Prozess der Labelgeneration und Konfliktermittlung die Positionen der Knoten nicht verändern, wäre es sehr ineffizient,
+Da sich während des Prozesses der Labelgeneration und Konfliktermittlung die Positionen der Knoten nicht verändern, wäre es sehr ineffizient,
 immer wieder alle Knoten (und deren Labels, sofern generiert) abzufragen.
 
 Da die Aufteilung der Knoten im Raum gleich bleibt (innerhalb einer Iteration des Render-Loops), ist es sinnvoller, diese einmalig zu Beginn
 in einem Quadtree zu sortieren bzw. zu strukturieren.
 
 Im Vergleich zu der naiven Methode mit einer Komplexität von $O(n^2)$ (da $n$-mal Knoten mit $n-1$ anderen Knoten verglichen werden) befindet man sich mit dem Quadtree in der Komplexitätsklasse
-$O(n \log n)$\footnote{ Vorausgesetzung: Der Baum ist gut balanciert}\cite{quadtree}.
+$O(n \log n)$\footnote{ Voraussetzung: Der Baum ist gut balanciert}\cite{quadtree}.
 
 Das Vorgehen des Quadtrees ist simpel: Initial startet man mit dem gesamten Bildschirm und allen Knoten.
 Nun ermittelt man den Mittelwert der $x$-Werte der Knoten und dasselbe analog für die $y$-Werte.
