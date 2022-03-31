@@ -6,7 +6,7 @@ Beim Labeling der Knoten sind als geometrische Repräsentation ein Kreis, das he
 und ein Radius, sowie der entsprechende Name des Knotens durch die Daten von \texttt{iGraph.js} gegeben.
 
 Nun ist es Aufgabe des Labelings, den Text des Labels erkennbar und visuell ansprechend in Nähe des dazugehörigen Knotens zu platzieren.
-Die Breite und die Höhe eines Labels werden von der ausgewählten Schriftart (siehe \hyperref[sec:configuration]{Configuration}) beeinflusst.
+Die Breite und die Höhe eines Labels werden von der ausgewählten Schriftart (siehe \hyperref[sec:configuration]{Konfiguration}) beeinflusst.
 Die Breite eines Labels hängt zusätzlich von dem entsprechenden Namen bzw. der Anzahl der Buchstaben ab.
 
 So ergeben sich die Höhe und Breite des Labels (sowie der Text selbst) und es muss eine Position in $x,y$-Koordinaten in Abhängigkeit
@@ -27,6 +27,13 @@ Die erste Position ist Nord-Ost, also rechts-oben, und von dort an wird entgegen
 Dieses und das nachfolgendene Verfahren sind durch die gängingen Standards der Kartografie inspiriert. Auch dort werden eben beschriebene
 Positionen generiert, allerdings in leicht veränderter Reihenfolge. ZITAT BITTE
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.4]{../img/4pos}
+    \caption{Labelpositionen im 4-Position-Model von ausgehenden vom dazugehörigen Knoten}
+    \label{fig:4pos}
+\end{figure}
+
 \subsubsection{8-Position-Model}
 \label{subsubsec:8pos}
 Im 8-Position-Model werden die potentiellen Labelpositionen in den Haupthimmelsrichtungen Ost, Nord, West, Süd generiert.
@@ -43,6 +50,13 @@ In der Implementation wurde dieses Problem dadurch behoben, dass eine "Hilfslini
 sodass die Zugehörigkeit schneller ersichtlich wird.
 Diese Technik wird im \hyperref[subsubsec:spiral]{Spiral-Model} nochmals angewandt, da hier dasselbe Problem besteht.
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.4]{../img/8pos}
+    \caption{Labelpositionen im 8-Position-Model von ausgehenden vom dazugehörigen Knoten}
+    \label{fig:8pos}
+\end{figure}
+
 \subsubsection{Slider-Model}
 \label{subsubsec:slider}
 Das Slider-Model ist ein aufwendigeres Verfahren als die vorhergehenden beiden. Die Idee hier ist, die Eckpunkte des \hyperref[subsubsec:4pos]{4-Position-Model} zu nehmen
@@ -53,6 +67,12 @@ Da angekommen wird dann parallel zur $x$-Achse in Richtung der Süd-West-Ecke ve
 
 Das Verschieben erfolgt hier offensichtlich im Uhrzeigersinn, um dem Trend der vorherigen beiden Verfahren entgegenzuwirken.
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.4]{../img/slider}
+    \caption{Labelpositionen im Slider-Model von ausgehenden vom dazugehörigen Knoten}
+    \label{fig:slider}
+\end{figure}
 
 \subsubsection{Spiral-Model}
 \label{subsubsec:spiral}
@@ -82,3 +102,11 @@ wenn die Verfahren dabei erfolglos geblieben sind.
 
 Wie auch beim \hyperref[subsubsec:8pos]{8-Position-Model} wird, ob des erweiterten Abstands zum korrespondieren Knoten, eine Hilfslinie genutzt,
 um die Verbindung für gefundene Labelpositionen und ihre Knoten deutlich zu machen.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.4]{../img/sample}
+    \caption{Labelpositionen im Spiral-Model von ausgehenden vom dazugehörigen Knoten.
+    Parameter im Beispiel: $m_{max}=50,d=1,c=6,r=500$}
+    \label{fig:spiral}
+\end{figure}

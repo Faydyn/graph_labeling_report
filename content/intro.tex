@@ -5,14 +5,13 @@ Mit \texttt{iGraph.js} existiert als praktische Grundlage ein Tool zur interakti
 Das Problem ist, dass ohne die Namen der Knoten und Kanten dem Graph recht wenig Bedeutung abgewonnen werden kann,
 es fehlt Kontext. Der Kontext kann durch ein Labeling des Graphen klarer werden. Dazu sind allerdings zwei Dinge zentral:
 
-Erstens sollte das Labeling muss visuell ansprechend sein, das heißt, es muss intuitiv klar sein, welches Label zu welchem Knoten oder zu welcher Kante gehört
+Erstens sollte das Labeling visuell ansprechend sein, das heißt, es muss intuitiv klar sein, welches Label zu welchem Knoten oder zu welcher Kante gehört
 und es sollten keine Überdeckungen entstehen.
 
 Zweitens sollte das Labeling performant sein, da selbst die schönste Anordnung von Labels nicht nützlich ist in einem dynamischen und interaktiven Umfeld, wenn sie zu lange zum Errechnen braucht.
 Den bestmöglichen Kompromiss aus Labeling Qualität und Performance zu finden, ist die Kernaufgabe dieses Projektes.
 
 Dazu haben wir eine Labeling Pipeline implementiert:
-Basically our approach is described by Luboschik et al.. \\ \\
 \begin{enumerate}
     \item Koordinaten der Knoten/Kanten updaten (von \texttt{iGraph.js})
     \item Potentielle Labelpositionen generieren
