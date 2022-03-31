@@ -11,6 +11,11 @@ Die Breite eines Labels hängt zusätzlich von dem entsprechenden Namen bzw. der
 
 So ergeben sich die Höhe und Breite des Labels (sowie der Text selbst) und es muss eine Position in $x,y$-Koordinaten in Abhängigkeit
 von dem entsprechenden Knoten gefunden werden.
+
+Die Reihenfolge des Labelings ergibt sich aus einer einmaligen Sortierung.
+Diese ist absteigend und sortiert nach der Größe der Radien der Knoten.
+Ein größerer Radius steht für eine höhere Relevanz, denn er bedeutet mehr Nachbarn und daher sind diese Knoten vom größerem Interesse.
+
 Zur Generierung der Position eines potentiellen Labels werden nacheinander verschiedene Verfahren verwendet, um möglichst effizient Labelpositionen zu generieren
 mit möglichst wenig Überdeckung der einzelnen potentiellen Positionen und so, dass niemals der dazugehörige Knoten überdeckt wird:
 
@@ -39,6 +44,7 @@ sodass die Zugehörigkeit schneller ersichtlich wird.
 Diese Technik wird im \hyperref[subsubsec:spiral]{Spiral-Model} nochmals angewandt, da hier dasselbe Problem besteht.
 
 \subsubsection{Slider-Model}
+\label{subsubsec:slider}
 Das Slider-Model ist ein aufwendigeres Verfahren als die vorhergehenden beiden. Die Idee hier ist, die Eckpunkte des \hyperref[subsubsec:4pos]{4-Position-Model} zu nehmen
 und dann Labelpostionen dazwischen zu generieren, in dem man das potentielle Label stückweise zum nächsten Eckpunkt verschiebt. Der Inkrement-Wert zum Verschieben ist konstant (siehe \hyperref[subsec:consts]{Magic Constants}).
 

@@ -1,1 +1,40 @@
-comparisions, totally left, right, above, below
+%comparisions, totally left, right, above, below
+
+Eine Bounding Box ist ein Rechteck um die minimalen und maximalen Ausdehnungen eines Objekts in den $x,y$-Koordinaten,
+das somit Grenzen angibt, in dem das Objekt auf jeden Fall vollständig liegt.
+
+Bounding Boxes wurden genutzt um die Bounds, also die Bildschirmgrenze, zu implementieren.
+Weiterhin fanden zu Anwendung als Repräsentation der Knoten und der Labels, sodass mit simplen Vergleichen
+eine Überdeckung ausgeschlossen werden kann.
+Eine weitere Nutzung findet sich im \hyperref[subsec:zoom]{Zoom Mode} zum Ersparen vieler unnötiger Berechnungen.
+
+\subsubsection{Bounds Checking}
+Die Bounds werden hier durch eine große Bounding Box repräsentiert.
+Für jeden Knoten und für jede Kante muss in jeder Iteration des
+Render-Loops kontrollieren werden, ob sie komplett sichtbar sind, das heißt, sich komplett in-bounds befinden.
+Außerdem muss dies für generierte Labels bzw. ihre Positionen kontrolliert werden.
+Das ist dann der Fall, wenn für das Objekt folgendes gilt:
+
+Sei $a$ das Objekt und $b$ die Bounds. $a,b$ sind Bounding Boxes:
+$$    in = a_{xmin} > b_{xmin} \wedge a_{ymin} > b_{ymin} \wedge a_{xmax} < b_{xmax} \wedge a_{ymax} < b_{ymax} $$
+
+
+Für die Knoten bleibt die Sortierung nach der Größe der Radien auch nach dem Filtern via Bounds Check erhalten,
+sodass der wichtigste, derzeit sichtbare Knoten als erstes versucht wird zu labeln.
+Um aus dem Versuch, als potenziellen Labelpositionen, tatsächliche Labelpositionen zu machen, muss überprüft werden,
+dass diese sich nicht mit Knoten schneiden (oder später mit schon gesetzten, also tatsächlichen, Labelpositionen).
+
+\subsubsection{Label Conflicts}
+\label{subsubsec:label_conflict}
+Da ein Greedy-Ansatz genutzt wurde, wird, sobald eine potenzielle Labelposition konfliktfrei ($cf$) ist, diese auch sofort genutzt -
+auf die Gefahr hin, dass dies Labelpositionen von anderen Objekten blockiert und gegebenenfalls ein besseres Labeling nicht erreicht wird.
+
+Für eine generierte Position, wie in \hyperref[sec:labeling]{Labeling} beschrieben, wird nun zur Konfliktermittlung eine Bounding Box erzeugt, also das Label "eingerahmt".
+Für diese Bounding Box wird jetzt kontrolliert, ob sie sich mit keiner Bounding Box von allen sichtbaren Knoten und keiner Bounding Box von gegebenenfalls schon erzeugten Labels überdeckt.
+Das heißt, für alle Vergleich muss gelten: Die Bounding Box des potenziellen Labels ist total links von, rechts von, über oder unter der liegen mit der sie verglichen wird (also des Knotens oder tatsächlichen Labels):
+
+Sei $a$ die potenzielle Bounding Box und $B$ die Menge der Bounding Boxes von Knoten und tatsächlichen Labels:
+$$ cf \leftrightarrow \forall b \in B: a_{xmax} < b_{xmin} \vee a_{xmin} > b_{xmax} \vee a_{ymax} < b_{ymin} \vee a_{ymin} > b_{ymax} $$
+
+So können sukzessive potenzielle Labelpositionen überprüft und, falls konfliktfrei, zu tatsächlichen Labels umgewandelt werden,
+die dann im weiteren Verlauf selbst Berücksichtigung bei der Konfliktermittlung finden.

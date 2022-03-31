@@ -1,3 +1,24 @@
-more conservative on animation side of things (keep positon as long as possible) => comes from implementation to always try to label most important stuff first
-better conflict detection with circle/bbox for Vertices
-better labeling for edges according to standards (leads to increased complixity in conflict detection for most cases)
+%more conservative on animation side of things (keep positon as long as possible) => comes from implementation to always try to label most important stuff first
+%better conflict detection with circle/bbox for Vertices
+%better labeling for edges according to standards (leads to increased complixity in conflict detection for most cases)
+%
+%
+
+Die Grundlage des Labeling wurde durch dieses Projekt erstellt. Auf der Seite der Performance wurden viele Techniken umgesetzt
+und Möglichkeit genutzt um unnötige Berechnungen zu ersparen. Hinsicht der Visualisierung können aber vor allem noch Verbesserungen vorgenommen werden:
+
+\subsubsection{Verbessertes Kantenlabeling}
+Die Kantenlabels sollten ebenfalls nach kartografischen Standard gezeichnet werden. Das heißt, parallel zur entsprechenden Kante.
+Dafür wären zum einen verbesserte Animationen nötig, um die Labels zu rotieren. Des Weiteren eine verbesserte Konfliktermittlung,
+da dann nicht mehr garantiert werden kann, dass die Kantenlabels parallel zur $x$- und $y$-Achse sind.
+
+\subsubsection{Verbesserte Repräsentation der Knoten als Kreis}
+Das würde die Labelqualität verbessern, da die Labels noch näher an den Knoten wären und dementsprechend auch weniger Platz an jedem Knoten verschwenden (die Ecken der Bounding Box, die nicht Teil der Knotens sind).
+
+Auch hier wäre eine verbesserte Konfliktermittlung, da die Knoten dann als Kreis statt als Bounding Box repräsentiert würden.
+Zusammen mit dem ersten Verbesserungsvorschlag müsste man dann nicht Rechteckee parallel zur $x$- und $y$-Achse, sondern stattdessen beliebig orientierte Rechtecke und Kreise vergleichen, was wesentlich aufwendiger ist.
+
+\subsubsection{Konservativere Animationen}
+Zuweilen sind die Animationen sehr aktiv, was zu viel Unruhe im Labeling führt. Gegebenfalls sollte man eine Toleranzzeit einführen,
+sodass sich Labels kurzzeitig überlappen dürfen, da viele Animationen durch minimale Überdeckungen während der Bewegungen entstehen.
+Eine solche Toleranzzeit würde das Gesamtbild etwas statischer machen und einfach bei den \hyperref[subsec:consts]{Magic Constants} hinzugefügt werden.

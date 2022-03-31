@@ -1,1 +1,32 @@
-3 modes depending on (visible now X visible before) (both not visible doesnt matter)
+%3 modes depending on (visible now X visible before) (both not visible doesnt matter)
+Die Animation finden immer dann statt, wenn sich der Sichtbarkeitszustand von Labels im Vergleich zur vorherigen Iteration des Render Loops ändert
+oder es nach wie vor sichtbar ist, aber die Position des Labels sich geändert hat.
+Das passiert, wenn in der neuen Iteration für ein anderes, wichtigeres Label diese Position gefunden wurde, dann im Nachhinein aber noch für das unwichtigere Label eine andere Position gefunden werden kann.
+Wäre dies nicht der Fall, würde sich der Sichtbarkeitszustand zu nicht sichtbar ändern und das unwichtigere Label würde ausgeblendet werden (siehe \autoref{fig:animation}).
+
+Hierfür wird die Klasse aus {Animatable.js} aus {iGraph.js} verwendet, die dort auch schon die Animation der Knoten händelt.
+Somit werden Knoten und Labels durch dieselben Funktionen animiert.
+
+\begin{figure}[H]
+    \centering
+
+   $$ \begin{array}{c|c|c}
+                        & \text{sichtbar}_t  & \text{nicht sichtbar}_t\\ \hline
+         \text{sichtbar}_{t-1}   & \text{animate}   & \text{fade out} \\ \hline
+        \text{nicht sichtbar}_{t-1} & \text{fade in}    & -
+    \end{array}$$
+    \caption{Zustände von Labelsichtbarkeit vor ($t-1$) und nach ($t$) dem Update der Positionen und die entsprechenden Animationsfunktionen}
+    \label{fig:animation}
+\end{figure}
+
+\subsubsection{Fade In / Fade Out}
+Diese Funktion verändern lediglich die Alpha-Werte, also die Transparenz, der Labels und ggf. der dazugehörigen Linien.
+Für das Ausblenden werden sukzessive die Alpha-Werte dekrementiert, zum Einblenden werden sie sukzessive erhöht.
+
+\subsubsection{Animate}
+Da hier vor und nach dem Update das Label zu sehen ist, muss es verschoben werden.
+Dabei kann es passieren, dass es kurzzeitig zu Überdeckung des von Labels und Knoten kommt.
+In der finalen Position, nach der Animation, allerdings nicht mehr, da diese Position konfliktfrei ist.
+
+Die Bewegungen bzw. die Animationen sind nicht rein linear, was das Labeling flüssiger, interaktiver und "lebendiger" erscheinen lässt, auch wenn es zusätzliche Berechnungen erfordert.
+Diese können angestellt werden, da zuvor auf Effizienz geachtet wurde.

@@ -1,1 +1,28 @@
-Depending on visible amount, more or less complex procedures are used.
+%Depending on visible amount, more or less complex procedures are used.
+
+Performance Modes bilden ein Zusammenspiel aus der Anzahl der sichtbaren Knoten, also derjenigen, die in-bounds sind, und den
+genutzten Labeling Verfahren. Allgemein gesagt: Je mehr Knoten sichtbar sind, desto weniger Verfahren werden genutzt -
+und die genutzten Verfahren sind die einfacheren Verfahren.
+
+Dies wird durch Grenzwerte realisiert (siehe \hyperref[subsec:consts]{Magic Constants}).
+Die Grenzwerte (siehe \autoref{fig:perf_modes}) wurden vor allem durch manuelles Testen ermittelt.
+Ziel war es das ein Labelingdurchlauf im Render-Loop möglichst unter $50$ ms bleibt.
+
+\begin{figure}[H]
+    \centering
+    $$
+    \begin{array}{c|c|l}
+        \text{Minimum} & \text{Maximum} & \text{Verfahren}\\ \hline
+        1 & 99 & \text{\hyperref[subsubsec:4pos]{4-Position-Model}, \hyperref[subsubsec:8pos]{8-Position-Model}, \hyperref[subsubsec:slider]{Slider-Model}, \hyperref[subsubsec:spiral]{Spiral-Model} }\\ \hline
+        100 & 499 & \text{\hyperref[subsubsec:4pos]{4-Position-Model}, \hyperref[subsubsec:8pos]{8-Position-Model}, \hyperref[subsubsec:slider]{Slider-Model} }\\ \hline
+        500 & 999 & \text{\hyperref[subsubsec:4pos]{4-Position-Model}, \hyperref[subsubsec:8pos]{8-Position-Model} }\\ \hline
+        500 & \infty & \text{\hyperref[subsubsec:4pos]{4-Position-Model}}
+    \end{array}
+    $$
+    \caption{Intervalle wie standardmäßig im Projekt festgelegt (siehe \hyperref[subsec:consts]{Magic Constants}) mit dazugehörigen Labeling Verfahren}
+    \label{fig:perf_modes}
+\end{figure}
+
+Hier ist der Zweck, dass man bei sehr vielen sichtbaren Knoten durch das Labeling eine schnelle, grobe Orientierung bekommen kann.
+Danach kann man via Zoom-In den gewünschten Bereich genauer explorieren, wofür dann auch ein aufwendiges und somit detailliertes Labeling wünschenswert wäre.
+Da dann auch weniger Knoten zu sehen sind, was zu weniger Vergleichen führt, ist hier genug Zeit für solche komplizierten Berechnung.

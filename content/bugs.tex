@@ -1,2 +1,14 @@
-Flying Labels,
-Not Bug but consequence of implementation: Possible to have no labeling when everything is super dense
+%Flying Labels,
+%Not Bug but consequence of implementation: Possible to have no labeling when everything is super dense
+
+Beim Testen wurden die meisten Bugs gefixed - ein selten auftretender Bug ist übrig geblieben:
+"Flying Labels".
+
+Manchmal kann es vorkommen, dass beim Fade Out von Labels diese von ihrer Position "wegfliegen" in eine Ecke des Bildschirms.
+Dies fällt nur auf, wenn enorm viele Berechnungen stattfinden, also die Animationen langsamer sind.
+
+Eine weitere ungünstige Konsequenz die aus der Erpichtheit auf Performance entstand:
+Wenn alle sichtbaren Knoten als ineffizient markiert werden (und somit nicht gelabelt werden) und kein Zoom Mode möglich ist, z. B. wenn man Radar und Lens Funktion von \texttt{iGraph.js} nutzt,
+dann wird gar nichts gelabelt.
+
+Diese Situation sind aber prakisch unmöglich, man muss sie sehr gezielt erzwingen.

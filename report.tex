@@ -3,9 +3,14 @@
 \usepackage[colorlinks,allcolors=blue]{hyperref}
 \usepackage{doi}
 \usepackage{amssymb}
+\usepackage{amsmath}
 \usepackage{amsthm}
 \usepackage{pdfpages}
 \usepackage{lscape}
+\usepackage{float}
+\usepackage{multirow}
+\usepackage[ngerman]{babel}  % für Silbentrennung
+\usepackage{bibgerm}
 \usepackage[symbol]{footmisc}
 \renewcommand{\thefootnote}{\fnsymbol{footnote}}
 
@@ -25,33 +30,41 @@
 
 \end{frontmatter}
 
-Greedy approach realized by generator functions.
-\paragraph{Pipeline}
+
+\textbf{Bemerkung:} Dieses Projekt wurde in Kooperation mit Nico Trebbin erstellt. Der Bericht wurde als eigenständiges Werk von dem Autor angefertigt.
+Bilddateien haben gegebenenfalls einen gemeinsamen Ursprung als Material für die Präsentation im Rahmen des Projektes.
+
+Viele der Kernbegriffe des Projektes werden in diesem Bericht im Original verwendet, um Konsistenz mit der Codebasis zu erhalten und mit den Präsentationen des Projektes.
+
+\section{Einleitung}
 \label{sec:pipeline}
     \input{content/pipeline.tex}
-
-\begin{figure}[bh]
-    \centering
-    \includegraphics{img/sample_image}
-    \caption{Sample image caption.}
-    \label{fig:sample1}
-\end{figure}
 
 
 \section{Labeling}
 \label{sec:labeling}
+Labeling bezeichnet den Prozess, ein Objekt sichtbar mit seinem Namen oder anderen Informationen zu versehen.
+Somit gilt es für einen Graphen, seine Knoten und seine Kanten zu labeln.
 
-\subsection{Vertices}
+In erster Linie werden hier die verschiedenen Verfahren erklärt, wie Labelpositionen abhängig von ihrem Objekt und seiner Position erzeugt werden.
+Oft wird im folgenden über "potentiellen" Labelpositionen geschrieben - der Grund dafür ist, dass, sobald mehrere Objekte gelabelt werden müssen, sich
+deren potentielle Labelpositionen gegenseitig überdecken können. Dieses Problem wird in \hyperref[sec:conflict]{Conflict Detection und Bounds} aufgelöst.
+Somit wird sich hier auf die Verfahren für ein individuelles Objekt konzentriert.
+\subsection{Knotenlabeling}
 \label{subsec:labeling_vertices}
     \input{content/vertex_labeling.tex}
 
-\subsection{Edges}
+\subsection{Kantenlabeling}
 \label{subsec:labeling_edges}
     \input{content/edge_labeling.tex}
 
 
-\section{Conflict Detection}
+\section{Conflict Detection und Bounds}
 \label{sec:conflict}
+
+Bevor Labels generiert werden, sollte sichergestellt sein, dass die Knoten und Kanten überhaupt sichtbar sind,
+um unnötige Berechnung zu ersparen. Wenn ein potentielles Label zu einem tatsächlichen Label wird, sollte sichergestellt sein,
+dass es sich nicht mit anderen tatsächlichen Labels oder Knoten überdeckt. Um diese Probleme zu lösen, werden Bounding Boxes genutzt:
 
 \subsection{Bounding Boxes}
 \label{subsec:bbox}
@@ -65,6 +78,16 @@ Greedy approach realized by generator functions.
 \section{Adaptation/Optimization}
 \label{sec:adaptation}
 
+Mit dem Quadtree wurde schon eine erste Form der Optimierung in diesem Projekt vorgestellt.
+Diese ist allerdings sehr generisch und in der Computergrafik vielseitig eingesetzt.
+
+Die Idee, aufwendige Berechnungen vorher zu erkennen und einzusparen bleibt auch bei nächsten Optimierungen, jedoch sind diese
+spezieller auf das Projekt bzw. Graph Labeling zugeschnitten und es geht hier um die Balance zwischen visuell ästhetischem und trotzdem performantem Labeling,
+also einen Trade-Off zwischen diesen beiden Faktoren. Ein Quadtree ist immer besser als naive, da besteht kein Trade-Off.
+Insofern sind die
+
+Tendenziell gilt: Je mehr Element potentiell zu labeln sind und je dichter diese Elemente beieinander sind, desto aufwendiger wird das Labeling und sollte zu Gunsten der Performance vereinfacht werden.
+
 \subsection{Zoom Mode}
 \label{subsec:zoom}
     \input{content/zoom_mode.tex}
@@ -76,6 +99,9 @@ Greedy approach realized by generator functions.
 
 \section{Visualization}
 \label{sec:visualization}
+Wenn ein potentielles Label nach Feststellen von Konfliktfreiheit zu einem tatsächlichen Label wird, so ist es für das Backend (wie in \hyperref[sec:conflict]{Conflict Detection und Bounds} beschrieben) relevant, dieses Label von nun an in der Konfliktermittlung zu berücksichtigen.
+Für das Frontend gilt es dann, das Label an der gefundenen, freien Position zu zeichnen und animieren, sodass es für den Nutzer angenehmer anzuschauen ist.
+
 
 \subsection{Drawing}
 \label{subsec:draw}
@@ -88,6 +114,16 @@ Greedy approach realized by generator functions.
 
 \section{Configuration}
 \label{sec:configuration}
+
+Die Konfiguration des Labeling kann über zwei Wege erfolgen:
+
+Der erste ist der "User Mode" und erfolgt über ein minimales GUI, das bereits durch \texttt{iGraph.js} vorhanden war.
+Neue Funktionalität wurden einfach in zusätzliche Buttons implementiert.
+
+Der zweite Weg ist der "Author Mode". Es existiert ein File \texttt{consts.js}, in denen alle im Projekt
+genutzten Magic Constants in einem Objekt zentral definiert sind und somit auch dort abgeändert werden könnten.
+Die Standardeinstellungen sind allerdings getestet, auf \texttt{iGraph.js} zugeschnitten und haben sich über Monate etabliert.
+Bei Änderung könnten ungewollte Konsequenzen und Bugs auftreten.
 
 \subsection{GUI}
 \label{subsec:gui}
@@ -113,6 +149,10 @@ Greedy approach realized by generator functions.
 \label{subsec:suggest}
     \input{content/suggest.tex}
 
+\section*{Danksagung}
+Ich möchte meinem Projektpartner Nico Trebbin für die Zusammenarbeit danken. Wir haben uns viel vorgenommen und viel davon umgesetzt.
+Weiterhin danke ich Prof. Christian Tominski für das Semester, die Möglichkeit, auf seiner Codebasis aufzubauen und die Tipps, Anregungen und das Feedback während der Meetings.
+Zu guter letzt möchte ich meiner Freundin Emily Fuhrmann für ihre Unterstützung in jeder Lage danken.
 
 \bibliographystyle{plainnat} 
 \bibliography{references.bib}
