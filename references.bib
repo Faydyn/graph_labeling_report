@@ -138,7 +138,7 @@
 @String{VL         = PROC #{ IEEE Symposium on Visual Languages (VL)}}
 
 %% References
-@article{RN38,
+@article{main,
    author = {Luboschik, Martin and Schumann, Heidrun and Cords, Hilko},
    title = {Particle-based labeling: Fast point-feature labeling without obscuring other visual features},
    journal = {IEEE Transactions on Visualization and Computer Graphics},
@@ -153,46 +153,85 @@
    type = {Journal Article}
 }
 
+@url{cartography,
+url = {https://www.e-education.psu.edu/geog486/node/557},
+last_update = {31.03.2022}}
 
-
-
-@InProceedings{Tominski12GreatWall,
-  author    = {Christian Tominski and Hans-Jörg Schulz},
-  title     = {{The Great Wall of Space-Time}},
-  booktitle = PROC #{ Workshop on Vision, Modeling \& Visualization (VMV)},
-  year      = {2012},
-  pages     = {199--206},
-  publisher = EG,
-  doi       = {10.2312/PE/VMV/VMV12/199-206},
+@article{percept_animate,
+  title={Perception of Animated Node-Link Diagrams for Dynamic Graphs},
+  author={S. Ghani, N. Elmqvist, J. S. Yi},
+  year={2012},
+ url = {https://doi.org/10.1111/j.1467-8659.2012.03113.x}
 }
 
-@InProceedings{Tominski16CompaRing,
-  author    = {Christian Tominski},
-  title     = {{CompaRing: Reducing Costs of Visual Comparison}},
-  booktitle = {Short Paper Proceedings of the Eurographics Conference on Visualization (EuroVis)},
-  year      = {2016},
-  pages     = {137--141},
-  publisher = EG,
-  doi       = {10.2312/eurovisshort.20161175},
+@inproceedings{edge_improve,
+author = {Romat, Hugo and Appert, Caroline and Bach, Benjamin and Henry-Riche, Nathalie and Pietriga, Emmanuel},
+title = {Animated Edge Textures in Node-Link Diagrams: A Design Space and Initial Evaluation},
+year = {2018},
+isbn = {9781450356206},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3173574.3173761},
+doi = {10.1145/3173574.3173761},
+abstract = {Network edge data attributes are usually encoded using color, opacity, stroke thickness and stroke pattern, or some combination thereof. In addition to these static variables, it is also possible to animate dynamic particles flowing along the edges. This opens a larger design space of animated edge textures, featuring additional visual encodings that have potential not only in terms of visual mapping capacity but also playfulness and aesthetics. Such animated edge textures have been used in several commercial and design-oriented visualizations, but to our knowledge almost always in a relatively ad hoc manner. We introduce a design space and Web-based framework for generating animated edge textures, and report on an initial evaluation of particle properties - particle speed, pattern and frequency - in terms of visual perception.},
+booktitle = {Proceedings of the 2018 CHI Conference on Human Factors in Computing Systems},
+pages = {1–13},
+numpages = {13},
+keywords = {particles, trees, networks, node-link diagrams, animation},
+location = {Montreal QC, Canada},
+series = {CHI '18}
 }
 
-@Article{Tominski17LensesExtended,
-  author  = {Christian Tominski and Stefan Gladisch and Ulrike Kister and Raimund Dachselt and Heidrun Schumann},
-  title   = {{Interactive Lenses for Visualization: An Extended Survey}},
-  journal = CGF,
-  year    = {2017},
-  volume  = {36},
-  number  = {6},
-  pages   = {173--200},
-  doi     = {10.1111/cgf.12871},
+
+@article{quadtree,
+  title={Building a Balanced k-d Tree in O(kn log n) Time},
+  author={Russell A. Brown},
+  journal={ArXiv},
+  year={2014},
+  volume={abs/1410.5420}
 }
 
-@Book{Tominski20IVDA,
-  author    = {Christian Tominski and Heidrun Schumann},
-  title     = {{Interactive Visual Data Analysis}},
-  year      = {2020},
-  publisher = {CRC Press},
-  doi       = {10.1201/9781315152707},
+@inproceedings{animation,
+  title={Animation: Does it facilitate learning},
+  author={Morrison, Julie Bauer and Tversky, Barbara and Betrancourt, Mireille},
+  booktitle={AAAI spring symposium on smart graphics},
+  volume={5359},
+  year={2000}
 }
 
+@INPROCEEDINGS{interactive,
+  author={Tominski, C. and Abello, J. and van Ham, F. and Schumann, H.},
+  booktitle={Tenth International Conference on Information Visualisation (IV'06)},
+  title={Fisheye Tree Views and Lenses for Graph Visualization},
+  year={2006},
+  volume={},
+  number={},
+  pages={17-24},
+  doi={10.1109/IV.2006.54}}
+
+@INPROCEEDINGS{nphard,
+  author={Oleg V. Verner, Roger L. Wainwright, Dale A. Schoenefeld},
+  title={Placing Text Labels on Maps and Diagrams using Genetic Algorithms with Masking},
+  year={1997},
+  doi={10.1287/ijoc.9.3.266},
+url = https://doi.org/10.1287/ijoc.9.3.266}
+
+
+@inproceedings{edge_labels,
+author = {Schwartges, Nadine and Wolff, Alexander and Haunert, Jan-Henrik},
+title = {Labeling Streets in Interactive Maps Using Embedded Labels},
+year = {2014},
+isbn = {9781450331319},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/2666310.2666494},
+doi = {10.1145/2666310.2666494},
+abstract = {We consider the problem of labeling linear objects (such as streets) in interactive maps where the user can pan, zoom, and rotate continuously. Our labels contain text (such as street names). They are embedded into the objects they label, i.e., they follow the curvature of the objects, they do not move with respect to the map background, but they scale in order to maintain constant size on the screen. To the best of our knowledge, this is the first work that deals with curved labels in interactive maps.Our objective is to label as many streets as possible and to select label positions of high quality while forbidding labels to overlap at street crossings. We present a simple but effective algorithm that takes curvature and crossings into account and produces aesthetical labelings. On average over all interaction types, our implementation reaches interactive frame rates of more than 85 frames per second.},
+booktitle = {Proceedings of the 22nd ACM SIGSPATIAL International Conference on Advances in Geographic Information Systems},
+pages = {517–520},
+numpages = {4},
+keywords = {interactive maps, automated label placement, visualization},
+location = {Dallas, Texas},
+series = {SIGSPATIAL '14}
+}
 @Comment{jabref-meta: databaseType:bibtex;}

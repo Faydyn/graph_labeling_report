@@ -31,7 +31,7 @@ auf die Gefahr hin, dass dies Labelpositionen von anderen Objekten blockiert und
 
 Für eine generierte Position, wie in \hyperref[sec:labeling]{Labeling} beschrieben, wird nun zur Konfliktermittlung eine Bounding Box erzeugt, also das Label "eingerahmt".
 Für diese Bounding Box wird jetzt kontrolliert, ob sie sich mit keiner Bounding Box von allen sichtbaren Knoten und keiner Bounding Box von gegebenenfalls schon erzeugten Labels überdeckt.
-Das heißt, für alle Vergleich muss gelten: Die Bounding Box des potenziellen Labels ist total links von, rechts von, über oder unter der liegen mit der sie verglichen wird (also des Knotens oder tatsächlichen Labels):
+Ähnlich wie von Luboschik et al.\cite{main} beschrieben: Für alle Vergleich muss gelten: Die Bounding Box des potenziellen Labels ist total links von, rechts von, über oder unter der liegen mit der sie verglichen wird (also des Knotens oder tatsächlichen Labels):
 
 Sei $a$ die potenzielle Bounding Box und $B$ die Menge der Bounding Boxes von Knoten und tatsächlichen Labels:
 $$ cf \leftrightarrow \forall b \in B: a_{xmax} < b_{xmin} \vee a_{xmin} > b_{xmax} \vee a_{ymax} < b_{ymin} \vee a_{ymin} > b_{ymax} $$

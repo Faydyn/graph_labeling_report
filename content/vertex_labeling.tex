@@ -7,6 +7,7 @@ und ein Radius, sowie der entsprechende Name des Knotens durch die Daten von \te
 
 Nun ist es Aufgabe des Labelings, den Text des Labels erkennbar und visuell ansprechend in Nähe des dazugehörigen Knotens zu platzieren.
 Die Breite und die Höhe eines Labels werden von der ausgewählten Schriftart (siehe \hyperref[sec:configuration]{Konfiguration}) beeinflusst.
+Aktuell ist die Höhe auf eine Zeile begrenzt in der Implementation.
 Die Breite eines Labels hängt zusätzlich von dem entsprechenden Namen bzw. der Anzahl der Buchstaben ab.
 
 So ergeben sich die Höhe und Breite des Labels (sowie der Text selbst) und es muss eine Position in $x,y$-Koordinaten in Abhängigkeit
@@ -25,11 +26,11 @@ Das 4-Position-Model positioniert die potentiellen Labels möglichst nahe an dem
 Die erste Position ist Nord-Ost, also rechts-oben, und von dort an wird entgegen $x,y$-Koordinaten ein weiteres Label generiert (wenn nötig).
 
 Dieses und das nachfolgendene Verfahren sind durch die gängingen Standards der Kartografie inspiriert. Auch dort werden eben beschriebene
-Positionen generiert, allerdings in leicht veränderter Reihenfolge. ZITAT BITTE
+Positionen generiert, allerdings in leicht veränderter Reihenfolge.\cite{cartography}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.4]{../img/4pos}
+    \includegraphics[scale=0.55]{../img/4pos}
     \caption{Labelpositionen im 4-Position-Model von ausgehenden vom dazugehörigen Knoten}
     \label{fig:4pos}
 \end{figure}
@@ -44,7 +45,7 @@ Dies wird gemacht, um Überdeckung mit den zuvor im 4-Position-Model generierten
 das 8-Position-Model ohne den Abstand dann wahrscheinlich ebenfalls keine Position finden würde.
 
 Das führt dazu, dass vor allem die Ost-/West-Position eher weit entfernt von dem korrespondieren Knoten sind (da Labeltexte bzw. Namen in der Regel eher breit als hoch sind).
-Die Kartografie verwendet diese Positionen nicht. ZITAT BITTE
+Die Kartografie verwendet diese Positionen nicht.\cite{cartography}
 
 In der Implementation wurde dieses Problem dadurch behoben, dass eine "Hilfslinie", als visueller Indikator, das Label mit seinem entsprechenden Knoten verbindet,
 sodass die Zugehörigkeit schneller ersichtlich wird.
@@ -52,7 +53,7 @@ Diese Technik wird im \hyperref[subsubsec:spiral]{Spiral-Model} nochmals angewan
 
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.4]{../img/8pos}
+    \includegraphics[scale=0.55]{../img/8pos}
     \caption{Labelpositionen im 8-Position-Model von ausgehenden vom dazugehörigen Knoten}
     \label{fig:8pos}
 \end{figure}
@@ -69,7 +70,7 @@ Das Verschieben erfolgt hier offensichtlich im Uhrzeigersinn, um dem Trend der v
 
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.4]{../img/slider}
+    \includegraphics[scale=0.55]{../img/slider}
     \caption{Labelpositionen im Slider-Model von ausgehenden vom dazugehörigen Knoten}
     \label{fig:slider}
 \end{figure}
@@ -88,7 +89,7 @@ $$
 Das heißt, potentielle Labelposition werden hier spiralförmig generiert, also in ansteigendem Abstand vom dazugehörigen Knoten und in fairer Verteilung hinsichtlich der Richtung der Labels, da die Spirale auch den Winkel fortwährend inkrementiert.
 Auch ist die Idee wieder, den Trend von zuvor zu durchbrechen und auf eine unkonventiellere Art Labelposition zu suchen in Regionen, die zuvor noch nicht beachtet wurden.
 
-Die Parameter der Gleichung beeinflussen die Form und Ausrichtung der Spirale:
+Die Parameter der Gleichung von Luboschik et al.\cite{main} beeinflussen die Form und Ausrichtung der Spirale:
 \begin{itemize}
     \item $d$: Orientierung der Spirale (im/gegen den Uhrzeigersinn), ($d \in \{-1, 1 \}$)
     \item $c$: Krümmung bzw. Anzahl der Rotation der Spirale, ($c \in \mathbb{N}$)
@@ -105,7 +106,7 @@ um die Verbindung für gefundene Labelpositionen und ihre Knoten deutlich zu mac
 
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.4]{../img/sample}
+    \includegraphics[scale=0.55]{../img/sample}
     \caption{Labelpositionen im Spiral-Model von ausgehenden vom dazugehörigen Knoten.
     Parameter im Beispiel: $m_{max}=50,d=1,c=6,r=500$}
     \label{fig:spiral}
