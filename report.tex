@@ -6,19 +6,18 @@
 \usepackage{amsthm}
 \usepackage{pdfpages}
 \usepackage{lscape}
-
 \usepackage[symbol]{footmisc}
 \renewcommand{\thefootnote}{\fnsymbol{footnote}}
 
 
 \journal{Visual Analytics}
-
 \begin{document}
 \begin{frontmatter}
 
-\title{Balancing Performance }
+\title{Balancing Performance}
 \author{Nils Henrik Seitz\footnote[1]{\href{mailto:ns464@uni-rostock.de}{ns464@uni-rostock.de}} (Mat.Nr. 218205308)}
-\address{Institute for Visual \& Analytic Computing\\University of Rostock}
+\address{Faculty of Computer Science \\University of Rostock}
+
 
 \begin{abstract}
     \input{content/abstract.tex}
@@ -26,36 +25,106 @@
 
 \end{frontmatter}
 
-\section{Section title}
-\label{sec:sample1}
+Greedy approach realized by generator functions.
+\paragraph{Pipeline}
+\label{sec:pipeline}
+    \input{content/pipeline.tex}
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit~\cite{Tominski12GreatWall}, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum~\cite{Tominski16CompaRing,Tominski17LensesExtended}.
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua (see \autoref{fig:sample1}). Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum~\cite{Tominski20IVDA}.
-
-\begin{figure}
-\centering
-\includegraphics{img/sample_image}
-\caption{Sample image caption.}
-\label{fig:sample1}
+\begin{figure}[bh]
+    \centering
+    \includegraphics{img/sample_image}
+    \caption{Sample image caption.}
+    \label{fig:sample1}
 \end{figure}
 
-\section{Section title}
-\label{sec:sample2}
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+\section{Labeling}
+\label{sec:labeling}
+
+\subsection{Vertices}
+\label{subsec:labeling_vertices}
+    \input{content/vertex_labeling.tex}
+
+\subsection{Edges}
+\label{subsec:labeling_edges}
+    \input{content/edge_labeling.tex}
+
+
+\section{Conflict Detection}
+\label{sec:conflict}
+
+\subsection{Bounding Boxes}
+\label{subsec:bbox}
+    \input{content/bounding_box.tex}
+
+\subsection{Quadtree}
+\label{subsec:quadtree}
+    \input{content/quadtree.tex}
+
+
+\section{Adaptation/Optimization}
+\label{sec:adaptation}
+
+\subsection{Zoom Mode}
+\label{subsec:zoom}
+    \input{content/zoom_mode.tex}
+
+\subsection{Performance Modes}
+\label{subsec:perf}
+    \input{content/performance_mode.tex}
+
+
+\section{Visualization}
+\label{sec:visualization}
+
+\subsection{Drawing}
+\label{subsec:draw}
+    \input{content/drawing.tex}
+
+\subsection{Animation}
+\label{subsec:animate}
+    \input{content/animating.tex}
+
+
+\section{Configuration}
+\label{sec:configuration}
+
+\subsection{GUI}
+\label{subsec:gui}
+    \input{content/gui.tex}
+
+\subsection{Magic Constants}
+\label{subsec:consts}
+    \input{content/constants.tex}
+
+
+\section{About the project}
+\label{sec:about}
+
+\subsection{Technical Details}
+\label{subsec:technical}
+    \input{content/technical.tex}
+
+\subsection{Known Bugs}
+\label{subsec:bugs}
+    \input{content/bugs.tex}
+
+\subsection{Suggestions}
+\label{subsec:suggest}
+    \input{content/suggest.tex}
 
 
 \bibliographystyle{plainnat} 
 \bibliography{references.bib}
 
-\begin{landscape}
-    \begin{figure}
-        \centering
-        \includegraphics[width=\linewidth]{../03-labeling-nodes-and-edges-in-node-link-diagrams/doc/presentations/labeling algorithms/class_overview_4k.png}
-        \caption{Class Diagram}
-        \label{fig:classdiag}
-    \end{figure}
-\end{landscape}
+%\begin{landscape}
+%    \begin{figure}
+%        \centering
+%        \includegraphics[width=\linewidth]{../03-labeling-nodes-and-edges-in-node-link-diagrams/doc/presentations/labeling algorithms/class_overview_4k.png}
+%        \caption{Class Diagram}
+%        \label{fig:classdiag}
+%    \end{figure}
+%\end{landscape}
 %\includepdf[pages=-]{../03-labeling-nodes-and-edges-in-node-link-diagrams/doc/jsdoc/pdf/documentation2.pdf}
 
 \end{document}
