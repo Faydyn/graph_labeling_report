@@ -35,6 +35,13 @@ wird dann anderen, weniger relevanten (laut Vorsortierung), dafür effizienten K
 In den meisten Fällen ist der Quadtree aber effizient und das Ergebnis sind viele kleine, unabhängige Teilbereiche, in denen nur sehr wenige Knoten enthalten sind.
 Wenn nun ein potenzielles Label überprüft werden soll, so wird geguckt, welche Teilregionen des Quadtrees es überdeckt.
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.33]{../img/quadtree}
+    \caption{Aufteilung eines Quadtrees in seine Teilbereiche}
+    \label{fig:quadtree}
+\end{figure}
+
 Mit allen Knoten, die in diesen überdeckten Regionen enthalten sind, wird dann eine individuelle Konfliktermittlung durchgeführt.
 Das heißt, es werden nur Konflikte in der Nähe der potenziellen Labelposition direkt kontrolliert und der Rest wurde eliminiert
 durch den rekursiven Abstieg (mit Zugriffszeit $O (\log n)$) im Quadtree mit Grenzen, also der Bounding Box, des Labels.
@@ -42,4 +49,6 @@ durch den rekursiven Abstieg (mit Zugriffszeit $O (\log n)$) im Quadtree mit Gre
 Bleibt die potenzielle Labelposition (nach der Beschreibung aus \hyperref[subsubsec:label_conflict]{Label Conflicts} mit allen Elementen der überdecken Teilbereiche) konfliktfrei,
 so kann es zu einem tatsächlichen Label gemacht werden.
 Dieses wird als neues Element in die eben überprüften Teilregionen übernommen, sodass es zukünftig auch im Quadtree repräsentiert ist und bei der Konfliktermittlung berücksichtigt wird.
+
+
 
